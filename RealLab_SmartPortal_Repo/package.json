@@ -1,0 +1,16 @@
+{
+  "name": "reallab-smart-portal",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Real Lab Smart Portal (Multi-Labs via LabKey) - Netlify site + functions",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "dev": "netlify dev",
+    "test": "node -e \"console.log('OK')\""
+  },
+  "dependencies": {
+    "googleapis": "^140.0.0"
+  }
+}

@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>بوابة النتائج الذكية | Real Lab Smart Portal</title>
+  <meta name="description" content="بوابة آمنة لعرض نتائج التحاليل الطبية عبر المعمل باستخدام LabKey." />
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+</head>
+<body>
+  <div class="bg"></div>
+
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <div class="brand">
+        <div class="brand__mark" aria-hidden="true">
+          <img src="/assets/mark.svg" alt="" />
+        </div>
+        <div class="brand__text">
+          <div class="brand__name" id="labTitle">بوابة النتائج الذكية</div>
+          <div class="brand__sub" id="labSubtitle">Real Lab Smart Portal</div>
+        </div>
+      </div>
+
+      <div class="topbar__actions">
+        <button class="btn btn--ghost" id="langBtn" type="button" title="Switch Language">
+          <span id="langLabel">EN</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero__left">
+        <div class="hero__badge">
+          <span class="dot"></span>
+          <span id="heroBadgeText">عرض آمن لنتائج التحاليل</span>
+        </div>
+        <h1 class="hero__title" id="heroTitle">نتيجتك جاهزة؟</h1>
+        <p class="hero__desc" id="heroDesc">
+          افتح النتائج من خلال رابط المعمل الرسمي. لا نطلب أي تسجيل دخول.
+        </p>
+
+        <div class="lookup">
+          <div class="field">
+            <label class="label" for="patientId" id="patientIdLabel">رقم المريض</label>
+            <input class="input" id="patientId" placeholder="مثال: 102938" autocomplete="off" />
+          </div>
+          <button class="btn btn--primary" id="loadBtn" type="button">
+            <span class="btn__icon" aria-hidden="true">
+              <img src="/assets/search.svg" alt="" />
+            </span>
+            <span id="loadBtnText">عرض الملفات</span>
+          </button>
+        </div>
+
+        <div class="hint" id="hintBox">
+          <div class="hint__icon" aria-hidden="true">i</div>
+          <div class="hint__text" id="hintText">لو فاتح الرابط من واتساب، غالبًا رقم المريض موجود تلقائيًا.</div>
+        </div>
+      </div>
+
+      <aside class="hero__right">
+        <div class="card card--lab">
+          <div class="card__header">
+            <div class="logo" id="logoWrap">
+              <img id="labLogo" alt="Lab Logo" />
+              <div class="logo__fallback" id="logoFallback" aria-hidden="true">
+                <img src="/assets/lab.svg" alt="" />
+              </div>
+            </div>
+            <div class="meta">
+              <div class="meta__title" id="labNameCard">Lab Portal</div>
+              <div class="meta__sub" id="labKeyCard">LABKEY</div>
+            </div>
+          </div>
+
+          <div class="card__body">
+            <ul class="stats">
+              <li>
+                <span class="stats__label" id="statPrivacy">الخصوصية</span>
+                <span class="stats__value" id="statPrivacyVal">مؤمَّن</span>
+              </li>
+              <li>
+                <span class="stats__label" id="statSource">المصدر</span>
+                <span class="stats__value">Google Drive</span>
+              </li>
+              <li>
+                <span class="stats__label" id="statLogs">التسجيل</span>
+                <span class="stats__value" id="statLogsVal">كل مشاهدة</span>
+              </li>
+            </ul>
+            <div class="note" id="noteText">
+              كل ضغطة "عرض" يتم تسجيلها لحماية المريض والمعمل.
+            </div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="results" id="resultsSection" hidden>
+      <div class="results__header">
+        <h2 class="results__title" id="resultsTitle">ملفات النتائج</h2>
+        <div class="results__right">
+          <div class="pill" id="patientPill"></div>
+          <button class="btn btn--ghost" id="refreshBtn" type="button">
+            <img src="/assets/refresh.svg" alt="" aria-hidden="true" />
+            <span id="refreshText">تحديث</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="state" id="loadingState" hidden>
+        <div class="spinner" aria-hidden="true"></div>
+        <div id="loadingText">جاري تحميل الملفات...</div>
+      </div>
+
+      <div class="state state--error" id="errorState" hidden>
+        <div class="state__title" id="errorTitle">تعذر تحميل النتائج</div>
+        <div class="state__desc" id="errorDesc"></div>
+        <button class="btn btn--primary" id="retryBtn" type="button">
+          <span id="retryText">إعادة المحاولة</span>
+        </button>
+      </div>
+
+      <div class="grid" id="filesGrid"></div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer__left">© <span id="year"></span> Real Lab Smart Portal</div>
+      <div class="footer__right" id="footerRight">تم التطوير لدعم معامل متعددة عبر LabKey</div>
+    </footer>
+  </main>
+
+  <script src="/assets/app.js"></script>
+</body>
+</html>
