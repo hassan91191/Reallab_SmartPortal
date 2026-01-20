@@ -13,10 +13,9 @@ function parseServiceAccountJson() {
   try {
     return JSON.parse(txt);
   } catch (e) {
-    // Try un-escape newlines\n etc
+    // Try un-escape newlines \n etc
     try {
-      const fixed = txt.replace(/\\n/g, '
-');
+      const fixed = txt.replace(/\\n/g, '\n');
       return JSON.parse(fixed);
     } catch (_) {
       throw new Error('Invalid GOOGLE_SERVICE_ACCOUNT_JSON (not valid JSON)');
@@ -27,6 +26,7 @@ function parseServiceAccountJson() {
 let cached = null;
 function getClients() {
   if (cached) return cached;
+
   const sa = parseServiceAccountJson();
   const scopes = [
     'https://www.googleapis.com/auth/drive.readonly',
